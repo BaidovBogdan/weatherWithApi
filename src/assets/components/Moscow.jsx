@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import MoscowImg from "../images/Moscow.jpg";
-import CurrentWeather from "./forMoscow/currentWeather"
+import CurrentWeather from "./forMoscow/currentWeather";
 import "../components/style.css";
 import WindSpeed from "./forMoscow/currentGMT";
 import CurrentTime from "./forMoscow/currentTime";
+import { Link } from "react-router-dom";
 
-export default function Moscow({ onChangeTab }) {
-
+export default function Moscow() {
   const [showWeather, setShowWeather] = useState(false);
 
   return (
@@ -15,9 +15,9 @@ export default function Moscow({ onChangeTab }) {
         <header>
           <span>
             <p>Moscow &nbsp; &nbsp; &nbsp;</p>
-            <button onClick={() => onChangeTab("bp")}>
+            <Link to="/">
               toBishkek &nbsp; &nbsp; <b>&#10150;</b>
-            </button>
+            </Link>
           </span>
         </header>
         <main>
@@ -27,12 +27,15 @@ export default function Moscow({ onChangeTab }) {
           <br />
           {showWeather && (
             <div className={`slide-in ${showWeather ? "show" : ""}`}>
-            
               <div className="cards">
-              <CurrentWeather/> 
+                <CurrentWeather />
               </div>
-              <div className="cards"><WindSpeed/></div>
-              <div className="cards"><CurrentTime/></div>
+              <div className="cards">
+                <WindSpeed />
+              </div>
+              <div className="cards">
+                <CurrentTime />
+              </div>
             </div>
           )}
         </main>

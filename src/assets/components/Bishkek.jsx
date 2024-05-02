@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import BishkekImg from "../images/bishkek.jpg";
-import CurrentWeather from "./currentWeather"
+import CurrentWeather from "./currentWeather";
 import "../components/style.css";
 import WindSpeed from "./currentGMT";
 import CurrentTime from "./currentTime";
+import { Link } from "react-router-dom";
 
-export default function Bishkek({ onChangeTab }) {
-
+export default function Bishkek() {
   const [showWeather, setShowWeather] = useState(false);
 
   return (
@@ -15,9 +15,9 @@ export default function Bishkek({ onChangeTab }) {
         <header>
           <span>
             <p>Bishkek &nbsp; &nbsp; &nbsp;</p>
-            <button onClick={() => onChangeTab("bp")}>
+            <Link to="/moscow">
               toMoscow &nbsp; &nbsp; <b>&#10150;</b>
-            </button>
+            </Link>
           </span>
         </header>
         <main>
@@ -27,12 +27,15 @@ export default function Bishkek({ onChangeTab }) {
           <br />
           {showWeather && (
             <div className={`slide-in ${showWeather ? "show" : ""}`}>
-            
               <div className="cards">
-              <CurrentWeather/> 
+                <CurrentWeather />
               </div>
-              <div className="cards"><WindSpeed/></div>
-              <div className="cards"><CurrentTime/></div>
+              <div className="cards">
+                <WindSpeed />
+              </div>
+              <div className="cards">
+                <CurrentTime />
+              </div>
             </div>
           )}
         </main>

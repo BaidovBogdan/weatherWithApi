@@ -1,15 +1,17 @@
 import './App.css';
-import React, { useState } from "react";
+import React from "react";
 import Bishkek from "./assets/components/Bishkek";
 import Moscow from './assets/components/Moscow';
+import {Routes , Route} from "react-router-dom"
 
 function App() {
-    const [activeTab, setActiveTab] = useState("bp");
     
     return (
         <>
-            {activeTab === "bp" && <Bishkek onChangeTab={() => setActiveTab("mp")} />}
-            {activeTab === "mp" && <Moscow onChangeTab={() => setActiveTab("bp")} />}
+            <Routes>
+                <Route path="/" element={<Bishkek/>}/>
+                <Route path="/moscow" element={<Moscow/>}/>
+            </Routes>
         </>
     );
 }
